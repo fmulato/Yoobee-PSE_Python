@@ -21,7 +21,7 @@ scores_new = []
 
 qtd = int(input("Enter the amount of scores: "))
 for i in range(qtd): # add element into the list scores
-    scores.append(float(input(f"Enter your score {i+1}: ")))
+    scores.append(float(input(f"Enter your score {i+1} (0-100): ")))
 
 # calculat the corresponding grade
 grade = grade_classifier(qtd, scores)
