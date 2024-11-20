@@ -1,5 +1,15 @@
 '''
 Create a Python script that calculate the Body Mass Index from weight (kg) and height (m), using F=string to format
+
+Build a BMI (Body Mass Index) calculator that computes the BMI score based on a person's weight and height.
+•Use conditional statements to interpret the BMI score into categories such as Underweight, Normal weight, Overweight, and Obese.
+•Set the BMI classification thresholds as follows:
+- Underweight: less than 18.5
+- Normal weight: 18.5 to 24.9
+- Overweight: 25 to 29.9
+- Obese: 30 or more
+•Print out the person's BMI score and interpretation
+
 '''
 
 def is_numeric(val):

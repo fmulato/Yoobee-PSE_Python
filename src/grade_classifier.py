@@ -1,4 +1,19 @@
-'Grade classifier'
+''''Grade classifier
+
+Objective: Create a program that takes students' scores as input and assigns a grade based on the score. The grades should be A, B, C, D, or F.
+Requirements:
+• Ask for user input(format: [score1,score2,score3,…])
+• Utilize a list to store scores and their corresponding grades.
+• Iterate over the list of scores using a loop.
+• Use comparison operators within conditional statements to determine the appropriate grade for each score.
+• Print each student's score (keep 1 place after point) along with their respective grade.
+A: 90 and above
+B: 80 to 89
+C: 70 to 79
+D: 60 to 69
+F: below 60
+
+'''
 
 # function to calculate score in letter
 def grade_classifier(qtd, marks):
