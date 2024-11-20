@@ -52,7 +52,7 @@ def main_app():
         print(f"------------------------")
         print(f"Your Weight are {weight:.2f} kg")
         print(f"Your Height are {height:.2f} meters")
-        print(f"Your Body Mass Index are {your_bmi:.2f} kg/m^2")
+        print(f"Your Body Mass Index (bmi) are {your_bmi:.2f} kg/m^2")
         print(f"You are {msg}")
         print(f"------------------------")
 
