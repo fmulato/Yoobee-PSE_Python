@@ -20,7 +20,7 @@ title by author". If the book is not found, it should display "Book not found".
 class App_book():
 
     def __init__(self):
-        self.list_book = []
+        self.dic_book = {}
 
     def input(self):
         user_input = input(f"Type an option:\n"
@@ -29,9 +29,10 @@ class App_book():
                            f"SEARCH title\n")
 
         if user_input.startswith('ADD'):
-            self.title = user_input.split(', ')[0]
+            self.title = user_input.split(', ')[0][4:]
             self.author = user_input.split(', ')[1]
-            self.list_book.append(user_input[4:-1])
+            self.dic_book[self.title] = self.author
+            return self.dic_book
         if user_input.startswith('REMOVE'):
             pass
         if user_input.startswith('SEARCH'):
@@ -51,4 +52,5 @@ class App_book():
 if __name__ == '__main__':
     ab = App_book()
     ab.input()
+    print(ab.dic_book)
 
