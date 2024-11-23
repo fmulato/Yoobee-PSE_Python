@@ -17,40 +17,84 @@ title by author". If the book is not found, it should display "Book not found".
 "Invalid input. Please use ADD, REMOVE, or SEARCH followed by the book title and author."
 '''
 
+import json
+import os
+
 class App_book():
 
     def __init__(self):
-        self.dic_book = {}
+        if os.path.exists('book.json'):
+            with open('book.json', 'r') as file:
+                self.dic_book = json.load(file)
+        else:
+            self.dic_book = {}
+
+        self.title = ''
+        self.author = ''
 
     def input(self):
-        user_input = input(f"Type an option:\n"
+        self.user_input = input(f"=================\n"
+                           f"Type an option:\n"
                            f"ADD title, author,\n"
                            f"REMOVE title\n"
-                           f"SEARCH title\n")
+                           f"SEARCH title\n"
+                           f"EXIT\n"
+                           f"-->").upper()
 
-        if user_input.startswith('ADD'):
-            self.title = user_input.split(', ')[0][4:]
-            self.author = user_input.split(', ')[1]
-            self.dic_book[self.title] = self.author
-            return self.dic_book
-        if user_input.startswith('REMOVE'):
-            pass
-        if user_input.startswith('SEARCH'):
-            pass
+        if self.user_input.startswith('ADD') and \
+            len(self.user_input.split(', ')) ==2 and \
+            self.user_input[3] == ' ':
+            self.add(self.user_input)
 
-        print(self.list_book)
+        elif self.user_input.startswith('REMOVE'):
+            self.remove(self.user_input)
 
-    def add(self):
-        pass
+        elif self.user_input.startswith('SEARCH'):
+            self.search(self.user_input)
 
-    def remove(self):
-        pass
+        elif self.user_input.startswith('EXIT'):
+            print("Goodbye")
+            quit()
 
-    def search(self):
-        pass
+        else:
+            print("Invalid input. Please use ADD, REMOVE, or SEARCH followed by the book title and author.")
+
+
+    def add(self, user_input):
+
+        title = self.user_input.split(', ')[0][4:].upper()
+        author = self.user_input.split(', ')[1].upper()
+
+        if title in self.dic_book.keys():
+            print("Book already exist in the collection")
+        else:
+            self.dic_book[title] = author
+        return self.dic_book
+
+    def remove(self, user_input):
+        title = self.user_input.split(', ')[0][7:].upper()
+        if title not in self.dic_book.keys():
+            print("Book doesn't exist in the collection")
+        else:
+            self.dic_book.pop(user_input[7:])
+        return self.dic_book
+
+    def search(self, user_input):
+        title = self.user_input.split(', ')[0][7:].upper()
+        if title not in self.dic_book.keys():
+            print("Book not found")
+        else:
+            print(f"Book found: {title} by {self.dic_book[title]}")
+        return self.dic_book
 
 if __name__ == '__main__':
+
     ab = App_book()
-    ab.input()
-    print(ab.dic_book)
+
+    while True:
+        ab.input()
+
+    # Save into a JSON file
+    with open('book.json', 'w') as file:
+        json.dump(ab.dic_book, file, indent=4)
 
