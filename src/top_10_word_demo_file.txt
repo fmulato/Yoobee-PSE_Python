@@ -1,0 +1,11 @@
+        frequent
+one          624
+story        403
+old          400
+went         394
+said         371
+man          334
+prince       333
+well         301
+go           293
+ivan         262
